@@ -1,0 +1,34 @@
+:root {
+  --bg: #E9EEF2; --ink: #1C2B36; --muted: #5E7180; --line: #C9D4DC;
+  --accent: #2F6F8F; --ok: #2E8B57; --bad: #B4443A; --surface: #F7FAFC;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #131C22; --ink: #E4ECF1; --muted: #8DA0AD; --line: #2A3A45;
+          --accent: #6FB3D2; --ok: #5CC98A; --bad: #E07A6F; --surface: #1A252D; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.5 Manrope, system-ui, sans-serif; }
+main { max-width: 640px; margin: 0 auto; padding: 48px 20px; }
+header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 16px; }
+h1 { font-size: 2rem; font-weight: 800; margin: 0; letter-spacing: -0.02em; }
+.health { font-size: .875rem; color: var(--muted); display: flex; align-items: center; gap: 8px; }
+.dot { width: 10px; height: 10px; border-radius: 50%; background: var(--muted); }
+.dot.ok { background: var(--ok); }
+.dot.bad { background: var(--bad); }
+form { display: flex; gap: 8px; margin: 32px 0 8px; }
+input { flex: 1; min-width: 0; padding: 12px 14px; font: inherit; color: var(--ink);
+        background: var(--surface); border: 1px solid var(--line); border-radius: 8px; }
+button { padding: 12px 18px; font: inherit; font-weight: 600; color: #fff;
+         background: var(--accent); border: 0; border-radius: 8px; cursor: pointer; }
+button:disabled { opacity: .6; cursor: default; }
+input:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.msg { min-height: 1.5em; font-size: .9rem; color: var(--muted); }
+.msg.bad { color: var(--bad); }
+ol { list-style: none; padding: 0; margin: 24px 0 0; border-top: 2px solid var(--ink); }
+li { display: flex; justify-content: space-between; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+li span { overflow-wrap: anywhere; }
+li.new { animation: flash 1.2s ease-out; }
+@keyframes flash { from { background: color-mix(in srgb, var(--accent) 20%, transparent); } }
+@media (prefers-reduced-motion: reduce) { li.new { animation: none; } }
+time { color: var(--muted); font-size: .875rem; white-space: nowrap; }
+.empty { color: var(--muted); padding: 16px 0; }
